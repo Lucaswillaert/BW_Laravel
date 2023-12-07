@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +11,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//rootroute dat naar pagina welcome.blade.php
 Route::get('/', function () {
     return view('welcome');
 });
+ 
+//testroute voor about 
+Route::get('/about',function(){
+    return view('about');
+});
+
+//view route van about [/locatiedirectory , naam(zonder.php)]
+Route::view('/about','about');
