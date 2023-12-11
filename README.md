@@ -1,10 +1,8 @@
 # BW_Laravel
  backend web 2IT
 
-
  MODELS 
  -------
-
  Users
     -id
     - username 
@@ -12,24 +10,20 @@
     - password 
     - is_admin 
     -timestamps
-posts 
+Quotes 
     -id
-    - Title 
     -message
     -user_id (weten wie post en eigen post niet gaan liken )
     -timestamps
-
 Likes 
     -id 
     -post_id
     -user_id 
-
 FAQ 
     - ID 
     - Timestamp 
     - Question 
     - Answer 
-
 contact 
     - ID 
     - Username/email 
@@ -40,20 +34,16 @@ CONTROLLERS
 UserController
     - weergeven van profiel 
     - profiel te editen 
-
 PostsController
-    - weergeven van alle posts 
+    + weergeven van alle posts 
     - weergeven van form voor nieuwe post aan te maken 
     - nieuwe post saven 
     - weergeven van form voor post te editen 
     - verwerken van editen 
     - afhandelen van een delete 
     - specifieke posts weergeven 
-
 LikeController 
     - user kan post liken 
-
-
 aboutController 
     - info over de website 
     - FAQ staat erin waarmee de vragen die gesteld worden een antwoord op is 

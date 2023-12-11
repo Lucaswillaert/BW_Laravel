@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    public function user(){
+        return $this->belongsTo('\App\Models\User');
+        //link voor het koppelen user aan user_id op posts
+    }
 }
