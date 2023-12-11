@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\about;
-use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,34 +15,21 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//view route van about [/locatiedirectory , naam(zonder.php)]
-//als je een controller hebt --> [controller::class,'methode']
-//php artisan serve --> om te starten 
+Route::get('/', [PostController::class,'index'])->name('index');
 
-//rootroute dat naar pagina welcome.blade.php
+Route::get('/home', function(){
+    return view('home');
+})->middleware(['auth', 'verified'])->name('home');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-/*
-GET - Request a resource
-POST - create a resource
-PUT - Update a resource
-PATCH - modify a resource (partial update that has been changed)
-DELETE - Delete a resource
-OPTIONS - ask for information about the communication options available
-*/
-Route::get('/', function () {
-
-    return view('welcome');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
- 
-//testroute voor about 
-//Route::get('/about',[AboutController::class,'index']);
-//defined de methode index van de controller AboutController
-Route::resource('about', AboutController::class);
-// defined alle methodes van de controller in 1 keer
 
-
-
-
-
+require __DIR__.'/auth.php';
 
