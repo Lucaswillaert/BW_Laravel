@@ -17,9 +17,7 @@ use App\Http\Controllers\HomeController;
 */
 Route::get('/', [PostController::class,'index'])->name('index');
 
-Route::get('/home', function(){
-    return view('home');
-})->middleware(['auth', 'verified'])->name('home');
+Route::get('home', [HomeController::class,'index']) ->name('home'); 
 
 Route::get('/dashboard', function () {
     return view('dashboard');

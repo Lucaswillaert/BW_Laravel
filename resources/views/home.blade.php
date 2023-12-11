@@ -13,9 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    //hier komen alle posts
-
+                    hier komen alle posts
                    
                 </div>
             </div>

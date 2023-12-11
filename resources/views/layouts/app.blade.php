@@ -29,9 +29,7 @@
 
             <!-- Page Content -->
             <main>
-                @section('content')
-                    {{ $slot }}
-                @endsection
+             
             </main>
         </div>
     </body>
