@@ -18,7 +18,11 @@ Route::get('/', [PostController::class,'index'])->name('index');
 
 Route::get('home', [HomeController::class,'index']) ->name('home'); 
 
+Route::get('posts', [PostController::class,'index']) ->middleware('auth') ->name('posts.index');
 
+
+//route van journal 
+Route::get('journal', [PostController::class,'index']) ->middleware('auth') ->name('journal.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

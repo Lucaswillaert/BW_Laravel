@@ -7,9 +7,10 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index(){
-
+       
         $posts = Post::all();
-        return view ('posts.index',compact('posts' ));
+
+        return view ('posts.index', ['posts' => $posts]);
         // geeft alle posts weer in de posts variabele 
     }
 }

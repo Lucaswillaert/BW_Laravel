@@ -9,8 +9,14 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [ 'id','user_id','message','created_at'];
+
     public function user(){
-        return $this->belongsTo('\App\Models\User');
+        return $this->belongsTo(User::class);
         //link voor het koppelen user aan user_id op posts
     }
+
+
+
+
 }
