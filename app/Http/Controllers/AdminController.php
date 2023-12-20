@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('faq.index');
+        return view('admin.index');
     }
- 
+
     /**
      * Show the form for creating a new resource.
      */
