@@ -35,8 +35,8 @@ UserController
     - weergeven van profiel 
     - profiel te editen 
 PostsController
-    + weergeven van alle posts 
-    - weergeven van form voor nieuwe post aan te maken 
+    + weergeven van alle posts x
+    - weergeven van form voor nieuwe post aan te maken x
     - nieuwe post saven 
     - weergeven van form voor post te editen 
     - verwerken van editen 

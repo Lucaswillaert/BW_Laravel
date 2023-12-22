@@ -24,6 +24,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'message' => 'required|max:255',
         ]);
+        //foutmelding als er geen message is ingevuld
         $post = new Post();
         $post->message = $request->message;
         $post->user_id = auth()->user()->id;
