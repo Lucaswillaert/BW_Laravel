@@ -8,6 +8,13 @@ use App\Http\Controllers\JournalController;
 use App\Models\Journal;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Profile;
+use App\Http\Controllers\EntryController;
+
+
+
 
 /*
 GET - Request a resource
@@ -26,19 +33,42 @@ Route::get('posts/create', [PostController::class,'create']) ->middleware('auth'
 
 Route::post('posts', [PostController::class,'store']) ->middleware('auth') ->name('posts.store');
 
-//ROUTES VOOR JOURNAL 
-Route::get('journal.index', [JournalController::class,'index']) ->middleware('auth') ->name('journal.index');
+
+//route voor het aanmaken van een entry
+Route::get('journal.create', [EntryController::class,'create']) ->middleware('auth') ->name('journal.create');
+//route voor het opslaan van een entry
+Route::post('journal', [EntryController::class,'store']) ->middleware('auth') ->name('journal.store');
+//route voor het openen van een entry 
+Route::get('journal/{id}', [EntryController::class,'show']) ->middleware('auth') ->name('journal.show');
 
 
 
 //ROUTES VOOR ABOUT
 Route::get('faq/index', [AboutController::class,'index']) ->middleware('auth') ->name('faq.index');
 
+// Login routes
+Route::get('/login', [LoginController::class,'view'])->name('login');
+
+Route::post('/login', [LoginController::class,'login']);
+
+// Register routes
+Route::get('register', [RegisterController::class,'view'])->name('register');
+
+Route::post('register', [RegisterController::class,'register']);
+
+//ROUTES VOOR ENTRIES 
+Route::get('journal.index', [EntryController::class,'index']) ->middleware('auth') ->name('journal.index');
+//storen van entries
+Route::get('entries.create', [EntryController::class,'create']) ->middleware('auth') ->name('entries.create');
+//opslaan van entries
+Route::post('entries', [EntryController::class,'store']) ->middleware('auth') ->name('entries.store');
+//showen van entries
 
 
 
 //ROUTES VOOR ADMIN
 Route::get('admin/index', [AdminController::class,'index']) ->middleware('auth') ->name('admin.index');
+
 
 //ROUTES VOOR PROFILE
 Route::middleware('auth')->group(function () {
