@@ -35,7 +35,7 @@ class EntryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $entry = Entry::find($id);
     }
 
     /**
