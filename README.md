@@ -29,6 +29,12 @@ contact
     - Username/email 
     - info 
 
+entries 
+    - ID
+    -message
+    -Timestampe
+    -Title 
+
 CONTROLLERS
 ----------
 UserController
@@ -55,3 +61,13 @@ AdminPage
 
 
 12min ! 
+
+
+wat nog te doen: 
+    - bij inlog en uitlog word altijd doorgerefereert naar /dashboard --> dit afzetten 
+    - nachecken of journalposts wel blijven 
+    - quote posts --> openbaar maken voor elke user en een like knop voorzien en een comment knop 
+
+
+    - profile page kunnen bewerken en erin zetten dat ook img kan
+    - faq voor vragen en eronder een formulier voor een FAQ in te sturen 
