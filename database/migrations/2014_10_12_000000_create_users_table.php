@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->date("date_of_birth")->default('2000-01-01');
+            $table->text('about_me')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table -> boolean('is_admin')->default(false);

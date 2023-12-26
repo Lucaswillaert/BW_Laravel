@@ -69,6 +69,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'date_of_birth' => 'required|date|before:today',
         ]);
     }
 
@@ -89,6 +90,6 @@ class RegisterController extends Controller
 
     protected function redirectPath()
     {
-        return route('posts.index');
+        return route('/posts');
     }
 }

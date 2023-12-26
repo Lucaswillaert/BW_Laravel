@@ -57,4 +57,12 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    
+
+    public function index(){
+            
+            $user = Auth::user(); //ophalen ingelogde gebruiker
+            return view('profile.index', ['user' => $user]); //gebruiker meegeven aan view
+    }
 }
