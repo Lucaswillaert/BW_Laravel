@@ -47,9 +47,9 @@ Route::get('journal/{id}', [EntryController::class,'show']) ->middleware('auth')
 Route::get('faq/index', [AboutController::class,'index']) ->middleware('auth') ->name('faq.index');
 
 // Login routes
-Route::get('/login', [LoginController::class,'view'])->name('login');
+Route::get('auth/login', [LoginController::class,'view'])->name('login');
 
-Route::post('/login', [LoginController::class,'login']);
+Route::post('auth/login', [LoginController::class,'showLoginForm'])->name('logout');
 
 // Register routes
 Route::get('register', [RegisterController::class,'view'])->name('register');
@@ -69,10 +69,14 @@ Route::post('entries', [EntryController::class,'store']) ->middleware('auth') ->
 //ROUTES VOOR ADMIN
 Route::get('admin/index', [AdminController::class,'index']) ->middleware('auth') ->name('admin.index');
 
+//ROUTES VOOR LOGIN
+Route::get('auth/login', [LoginController::class,'view']) ->middleware('auth') ->name('login.view');
+
 
 //ROUTES VOOR PROFILE
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
