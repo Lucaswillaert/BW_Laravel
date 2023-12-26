@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Models\Post;
 
 class PostController extends Controller
 {
     public function index(){
        
+        //telkens bij herladen pagina nieuwe quote
         $posts = Post::all();
+        $response = Http::get('https://zenquotes.io/api/random');
+        $quoteData= $response -> json(0);
+        $quote= $quoteData['q'];
+        $author= $quoteData['a'];
 
-        return view ('posts.index', ['posts' => $posts]);
+        return view ('posts.index', ['posts' => $posts , 'quote' => $quote, 'author' => $author]);
         // geeft alle posts weer in de posts variabele 
     }
 

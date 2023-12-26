@@ -1,11 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container mx-auto px-4 ">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="container">
+
+                            <!-- Quote of the day dat veranderd bij het herladen van de pagina -->
+                        <div class="container mx-auto px-4">
+                            <div class="post-container mx-auto bg-white rounded shadow-md mt-6 px-4 py-4 w-1/2">
+                                <p class="text-lg">{{ $quote }}</p>
+                                <p class="text-right">— {{ $author }}</p>
+                            </div>
+                        </div>
+
                         <div class="row justify-content-center">
                             <div class="flex justify-center my-4">
                                 <a href="{{route('posts.create')}}"  class="btn btn-primary  mb-4 border-2 border-gray-500  rounded-lg px-4 py-2">Quote posten </a>
