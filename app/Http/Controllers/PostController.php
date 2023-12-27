@@ -8,24 +8,34 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function index(){
-       
-        //telkens bij herladen pagina nieuwe quote
-        $posts = Post::all();
-        $response = Http::get('https://zenquotes.io/api/random');
-        $quoteData= $response -> json(0);
-        $quote= $quoteData['q'];
-        $author= $quoteData['a'];
+    public function index()
+    {
 
-        return view ('posts.index', ['posts' => $posts , 'quote' => $quote, 'author' => $author]);
+        //telkens bij herladen pagina nieuwe quote
+        $posts = Post::with('likes')->get();
+        $posts = Post::with('comments')->get();
+        $response = Http::get('https://zenquotes.io/api/random');
+        $quoteData = $response->json(0);
+        $quote = $quoteData['q'];
+        $author = $quoteData['a'];
+
+        return view('posts.index', ['posts' => $posts, 'quote' => $quote, 'author' => $author]);
         // geeft alle posts weer in de posts variabele 
     }
 
-    public function create(){
-        return view ('posts.create');
+    public function show(Post $post)
+    {
+        $post->load('comments'); // Eager load the comments
+        return view('posts.show', compact('post'));
     }
 
-    public function store(Request $request){
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store(Request $request)
+    {
 
         $validated = $request->validate([
             'message' => 'required|max:255',
