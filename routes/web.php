@@ -10,12 +10,11 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
- use App\Http\Controllers\FaqController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Profile;
 use App\Http\Controllers\EntryController;
-
-
-
+use App\Http\Controllers\LikeController;
 
 /*
 GET - Request a resource
@@ -34,6 +33,11 @@ Route::get('posts/create', [PostController::class,'create']) ->middleware('auth'
 
 Route::post('posts', [PostController::class,'store']) ->middleware('auth') ->name('posts.store');
 
+//ROUTES COMMENTS/LIKES
+Route::post('posts/{post}/comments', [CommentController::class,'store'])->name('comments.store');
+Route::post('posts/{post}/like', [LikeController::class,'store'])->name('likes.store');
+
+Route::post('/posts/{post}/likes', [App\Http\Controllers\PostController::class, 'like'])->name('posts.like');
 
 //route voor het aanmaken van een entry
 Route::get('journal.create', [EntryController::class,'create']) ->middleware('auth') ->name('journal.create');
@@ -50,7 +54,8 @@ Route::post('faq', [FaqController::class, 'store'])->name('faq.store');
 //ROUTES VOOR ABOUT
 Route::get('about', [AboutController::class,'index']) ->name('about.index');
 
-
+//ROUTE VOOR PROFILE PAGE 
+Route::get('profile/edit', [ProfileController::class,'edit']) ->middleware('auth') ->name('profile.edit');
 
 // Login routes
 Route::get('auth/login', [LoginController::class,'view'])->name('login');
