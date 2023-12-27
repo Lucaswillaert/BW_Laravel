@@ -47,12 +47,15 @@ Route::get('faq', [FaqController::class, 'index']) -> name('faq.index');
 //Routes voor het sturen van een question 
 Route::post('faq', [FaqController::class, 'store'])->name('faq.store');
 
+//ROUTES VOOR ABOUT
+Route::get('about', [AboutController::class,'index']) ->name('about.index');
+
 
 
 // Login routes
 Route::get('auth/login', [LoginController::class,'view'])->name('login');
 
-Route::post('auth/login', [LoginController::class,'showLoginForm'])->name('logout');
+Route::post('auth/login', [LoginController::class,'logout'])->name('logout');
 
 // Register routes
 Route::get('register', [RegisterController::class,'view'])->name('register');
