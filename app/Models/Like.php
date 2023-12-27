@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Like extends Model
 {
     use HasFactory;
+
+
+    public function post()
+{
+    return $this->belongsTo('App\Models\Post');
+}
+
+public function user()
+{
+    return $this->belongsTo('App\Models\User');
+}
 }
