@@ -10,6 +10,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Profile;
 use App\Http\Controllers\EntryController;
 
@@ -41,10 +42,12 @@ Route::post('journal', [EntryController::class,'store']) ->middleware('auth') ->
 //route voor het openen van een entry 
 Route::get('journal/{id}', [EntryController::class,'show']) ->middleware('auth') ->name('journal.show');
 
+//ROUTES VOOR FAQ 
+Route::get('faq', [FaqController::class, 'index']) -> name('faq.index');
+//Routes voor het sturen van een question 
+Route::post('faq', [FaqController::class, 'store'])->name('faq.store');
 
 
-//ROUTES VOOR ABOUT
-Route::get('faq/index', [AboutController::class,'index']) ->middleware('auth') ->name('faq.index');
 
 // Login routes
 Route::get('auth/login', [LoginController::class,'view'])->name('login');
@@ -63,7 +66,6 @@ Route::get('entries.create', [EntryController::class,'create']) ->middleware('au
 //opslaan van entries
 Route::post('entries', [EntryController::class,'store']) ->middleware('auth') ->name('entries.store');
 //showen van entries
-
 
 
 //ROUTES VOOR ADMIN
