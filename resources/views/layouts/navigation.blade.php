@@ -32,10 +32,12 @@
                     <x-nav-link :href="route('about.index')" :active="request()->routeIs('about.index')">
                         {{ __('About Us') }}
                     </x-nav-link>
+                </div>
 
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     @if (Auth::user() && Auth::user()->is_admin == 1)
                         <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin.index')">
-                            {{ __('Admin Dashboard') }}
+                            {{ __('Admin') }}
                         </x-nav-link>
                     @endif
                 </div>

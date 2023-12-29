@@ -51,11 +51,17 @@ Route::get('faq', [FaqController::class, 'index']) -> name('faq.index');
 //Routes voor het sturen van een question 
 Route::post('faq', [FaqController::class, 'store'])->name('faq.store');
 
-//ROUTES VOOR ABOUT
+ //ROUTES VOOR ABOUT
 Route::get('about', [AboutController::class,'index']) ->name('about.index');
 
 //ROUTE VOOR PROFILE PAGE 
 Route::get('profile/edit', [ProfileController::class,'edit']) ->middleware('auth') ->name('profile.edit');
+
+//ROUTES VOOR ADMIN
+Route::get('admin/index', [AdminController::class,'index']) ->middleware('auth') ->name('admin.index');
+
+//FAQ ADMIN PAGE SUBMISSION
+Route::post('/faqs/{faq}/publish', [App\Http\Controllers\FaqController::class, 'publish']) ->middleware('auth') ->name('faqs.publish'); 
 
 // Login routes
 Route::get('auth/login', [LoginController::class,'view'])->name('login');
@@ -64,7 +70,7 @@ Route::post('auth/login', [LoginController::class,'logout'])->name('logout');
 
 // Register routes
 Route::get('register', [RegisterController::class,'view'])->name('register');
-
+//opslaan van register
 Route::post('register', [RegisterController::class,'register']);
 
 //ROUTES VOOR ENTRIES 

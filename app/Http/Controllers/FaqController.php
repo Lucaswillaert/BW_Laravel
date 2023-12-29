@@ -9,7 +9,7 @@ class FaqController extends Controller
 {
     public function index()
 {
-    $faqs = Faq::where('published', true)->get();
+    $faqs = Faq::all();
     return view('faq.index', ['faqs' => $faqs]);
 }
 
@@ -35,6 +35,14 @@ public function store(Request $request){
     $faq->save();
 
     return redirect()->route('faq.index') -> with ('success', 'Question added');
+}
+
+public function publish(Faq $faq)
+{
+    $faq->published = !$faq->published;
+    $faq->save();
+
+    return back();
 }
 
 
