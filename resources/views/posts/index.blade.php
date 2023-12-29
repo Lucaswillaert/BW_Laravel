@@ -31,29 +31,40 @@
                             </div>
                         @endif
                         @foreach ($posts as $post)
-                            <div class="post-container mx-auto bg-white rounded shadow-md mt-6 px-4 py-4 w-1/2">
+                            <div class="post-container relative mx-auto bg-white rounded shadow-md mt-6 px-4 py-4 w-1/2">
+                                <div class="absolute top-0 right-0">
+                                    <form method="POST" action="{{ route('posts.destroy', $post) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                    </form>
+                                </div>
+
                                 <div>
                                     <p>{{ $post->message }}</p>
                                 </div>
                                 <div>
                                     <small>{{ $post->created_at->format('d/m/y') }} by {{ $post->user_id }}</small>
                                 </div>
-                                
 
-                                    <div class="flex items-center border-2 border-gray-200 p-2">
-                                        <p class = "mr-5">{{ $post->likes->count() }} likes</p>
-                                        <form method="POST" action="{{ route('likes.store', $post->id) }}">
-                                            @csrf
-                                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Like</button>
-                                        </form>
+
+
+                                <div class="flex items-center border-2 border-gray-200 p-2">
+                                    <p class = "mr-5">{{ $post->likes->count() }} likes</p>
+                                    <form method="POST" action="{{ route('likes.store', $post->id) }}">
+                                        @csrf
+                                        <button type="submit"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Like</button>
+                                    </form>
+                                </div>
+
+                                @foreach ($post->comments as $comment)
+                                    <div class="flex items-center bg-gray-200 rounded shadow-md mt-1 px-3 py-3 ">
+                                        <p>{{ $comment->comment }}</p>
                                     </div>
+                                @endforeach
 
-                                    @foreach ($post->comments as $comment)
-                                        <div class="flex items-center bg-gray-200 rounded shadow-md mt-1 px-3 py-3 ">
-                                            <p>{{ $comment->comment }}</p>
-                                        </div>
-                                    @endforeach
-                               
 
                                 <div class="post-container  bg-white rounded shadow-md mt-6 px-4 py-4 w-1/2">
                                     <!-- Comment form -->
@@ -63,14 +74,13 @@
                                         <button type="submit">Post Comment</button>
                                     </form>
                                 </div>
-
-
                             </div>
-                        @endforeach
-
                     </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

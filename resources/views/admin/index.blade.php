@@ -30,7 +30,7 @@
                                             <td class="p-2">{{ $faq->created_at }}</td>
                                             <td class="p-2">
                                                 <form method="POST" action="{{ route('faqs.publish', $faq->id) }}">
-                                                Route::post('/faqs/{faq}/publish', [App\Http\Controllers\FaqController::class, 'publish'])->name('faqs.publish');    @csrf
+                                                 @csrf
                                                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                                         {{ $faq->published ? 'Unpublish' : 'Publish' }}
                                                     </button>

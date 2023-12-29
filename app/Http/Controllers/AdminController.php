@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 
+
 use Illuminate\Http\Request;
 use App\Models\Faq;
+use App\Models\Post;
+
+
 
 
 class AdminController extends Controller
@@ -15,7 +19,7 @@ class AdminController extends Controller
     public function index()
     {
         $faqs = Faq::all();
-    return view('admin.index', ['faqs' => $faqs]);
+        return view('admin.index', ['faqs' => $faqs]);
     }
 
     /**
@@ -61,8 +65,17 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+
+        // Delete all comments that belong to the post
+        foreach ($post->comments as $comment) {
+            $comment->delete();
+        }
+
+        // Then delete the post
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
 }

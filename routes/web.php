@@ -84,6 +84,8 @@ Route::post('entries', [EntryController::class,'store']) ->middleware('auth') ->
 
 //ROUTES VOOR ADMIN
 Route::get('admin/index', [AdminController::class,'index']) ->middleware('auth') ->name('admin.index');
+//delete quote door admin
+Route::delete('admin/posts/{post}', [AdminController::class,'destroy']) ->middleware('auth') ->name('posts.destroy');
 
 //ROUTES VOOR LOGIN
 Route::get('auth/login', [LoginController::class,'view']) ->middleware('auth') ->name('login.view');
