@@ -10,6 +10,7 @@
     - password 
     - is_admin 
     -timestamps
+    -about
 Quotes 
     -id
     -message
