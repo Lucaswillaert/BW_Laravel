@@ -46,8 +46,7 @@
 
                                         <!-- buttons -->
                                         <div class="buttons flex">
-                                            <a href="{{ route('faq.index') }}"
-                                                class="btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto">Cancel</a>
+                                            <a href="{{ route('faq.index') }}">
                                             <button type="submit"
                                                 class="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500">Post</button>
                                         </div>
