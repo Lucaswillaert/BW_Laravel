@@ -15,6 +15,8 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Profile;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ContactController;
+
 
 /*
 GET - Request a resource
@@ -53,6 +55,8 @@ Route::post('faq', [FaqController::class, 'store'])->name('faq.store');
 
  //ROUTES VOOR ABOUT
 Route::get('about', [AboutController::class,'index']) ->name('about.index');
+//ROUTES VOOR CONTACT
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 //ROUTE VOOR PROFILE PAGE 
 Route::get('profile/edit', [ProfileController::class,'edit']) ->middleware('auth') ->name('profile.edit');

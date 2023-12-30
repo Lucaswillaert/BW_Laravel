@@ -28,7 +28,15 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        $contact = Contact::create($request->all());
+        dd($request->all());
+        $contact = new Contact;
+
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+    
+        $contact->save();
+    
     
         return redirect()->back()->with('message', 'Your message has been sent!');
     }
