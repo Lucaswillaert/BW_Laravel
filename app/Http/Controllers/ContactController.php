@@ -28,7 +28,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+       
         $contact = new Contact;
 
         $contact->email = $request->email;
@@ -38,7 +38,7 @@ class ContactController extends Controller
         $contact->save();
     
     
-        return redirect()->back()->with('message', 'Your message has been sent!');
+        return redirect()->back()->with('success', 'Form submitted!');
     }
 
     /**
