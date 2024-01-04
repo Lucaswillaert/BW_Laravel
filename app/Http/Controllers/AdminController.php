@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Faq;
 use App\Models\Post;
+use App\Models\Contact;
 
 
 
@@ -19,7 +20,8 @@ class AdminController extends Controller
     public function index()
     {
         $faqs = Faq::all();
-        return view('admin.index', ['faqs' => $faqs]);
+        $contacts = Contact::all();
+        return view('admin.index', ['faqs' => $faqs , 'contacts' => $contacts]);
     }
 
     /**

@@ -46,7 +46,8 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        $contacts = Contact::all();
+        return view('index', ['contacts' => $contact]);
     }
 
     /**

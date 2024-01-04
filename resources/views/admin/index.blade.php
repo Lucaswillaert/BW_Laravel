@@ -61,12 +61,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($faqs as $faq)
+                                    @foreach ($contacts as $contact)
                                         <tr class="border-b-2 transition duration-200 hover:bg-gray-100 cursor-pointer">
-                                            <td class="p-2">{{ $faq->user->email }}</td>
-                                            <td class="p-2">{{ $faq->question }}</td>
-                                            <td class="p-2">{{ $faq->created_at }}</td>
-                                            <td class="p-2">
+                                            <td class="p-2">{{ $contact->email }}</td>
+                                            <td class="p-2">{{ $contact->subject }}</td>
+                                            <td class="p-2">{{ $contact->created_at }}</td>
+                                            <td class="p-2">{{ $contact->message  }}</td>
+                                            {{-- <td class="p-2">
                                                 <form method="POST" action="{{ route('faqs.publish', $faq->id) }}">
                                                     @csrf
                                                     <button type="submit"
@@ -74,7 +75,7 @@
                                                         {{ $faq->published ? 'Unpublish' : 'Publish' }}
                                                     </button>
                                                 </form>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

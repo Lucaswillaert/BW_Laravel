@@ -16,7 +16,7 @@ use App\Http\Controllers\Profile;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ContactController;
-
+use App\Models\Contact;
 
 /*
 GET - Request a resource
@@ -63,19 +63,24 @@ Route::get('profile/edit', [ProfileController::class,'edit']) ->middleware('auth
 
 //ROUTES VOOR ADMIN
 Route::get('admin/index', [AdminController::class,'index']) ->middleware('auth') ->name('admin.index');
-
+//delete quote door admin
+Route::delete('admin/posts/{post}', [AdminController::class,'destroy']) ->middleware('auth') ->name('posts.destroy');
+//route contacts weer geven voor admin
+Route::get('admin/contacts', [ContactController::class,'index']) ->middleware('auth') ->name('admin.contacts');
 //FAQ ADMIN PAGE SUBMISSION
-Route::post('/faqs/{faq}/publish', [App\Http\Controllers\FaqController::class, 'publish']) ->middleware('auth') ->name('faqs.publish'); 
+Route::post('/faqs/{faq}/publish', [App\Http\Controllers\FaqController::class, 'publish']) ->middleware('auth') ->name('faqs.publish');
 
-// Login routes
-Route::get('auth/login', [LoginController::class,'view'])->name('login');
 
+
+//logout
 Route::post('auth/login', [LoginController::class,'logout'])->name('logout');
 
 // Register routes
 Route::get('register', [RegisterController::class,'view'])->name('register');
 //opslaan van register
 Route::post('register', [RegisterController::class,'register']);
+//ROUTES VOOR LOGIN
+Route::get('auth/login', [LoginController::class,'view']) ->middleware('auth') ->name('login.view');
 
 //ROUTES VOOR ENTRIES 
 Route::get('journal.index', [EntryController::class,'index']) ->middleware('auth') ->name('journal.index');
@@ -84,16 +89,6 @@ Route::get('entries.create', [EntryController::class,'create']) ->middleware('au
 //opslaan van entries
 Route::post('entries', [EntryController::class,'store']) ->middleware('auth') ->name('entries.store');
 //showen van entries
-
-
-//ROUTES VOOR ADMIN
-Route::get('admin/index', [AdminController::class,'index']) ->middleware('auth') ->name('admin.index');
-//delete quote door admin
-Route::delete('admin/posts/{post}', [AdminController::class,'destroy']) ->middleware('auth') ->name('posts.destroy');
-
-//ROUTES VOOR LOGIN
-Route::get('auth/login', [LoginController::class,'view']) ->middleware('auth') ->name('login.view');
-
 
 //ROUTES VOOR PROFILE
 Route::middleware('auth')->group(function () {
