@@ -59,19 +59,22 @@ Route::get('about', [AboutController::class,'index']) ->name('about.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 //ROUTE VOOR PROFILE PAGE 
-Route::get('profile/edit', [ProfileController::class,'edit']) ->middleware('auth') ->name('profile.edit');
+Route::get('profile/edit', [ProfileController::class,'edit']) ->middleware('auth')->name('profile.edit');
 
 //ROUTES VOOR ADMIN
-Route::get('admin/index', [AdminController::class,'index']) ->middleware('auth') ->name('admin.index');
+Route::get('admin/index', [AdminController::class,'index']) ->middleware('auth')->name('admin.index');
 //delete quote door admin
-Route::delete('admin/posts/{post}', [AdminController::class,'destroy']) ->middleware('auth') ->name('posts.destroy');
+Route::delete('admin/posts/{post}', [AdminController::class,'destroy'])->middleware('auth') ->name('posts.destroy');
 //route contacts weer geven voor admin
-Route::get('admin/contacts', [ContactController::class,'index']) ->middleware('auth') ->name('admin.contacts');
+Route::get('admin/contacts', [ContactController::class,'index'])->middleware('auth') ->name('admin.contacts');
 //FAQ ADMIN PAGE SUBMISSION
-Route::post('/faqs/{faq}/publish', [App\Http\Controllers\FaqController::class, 'publish']) ->middleware('auth') ->name('faqs.publish');
-
-
-
+Route::post('/faqs/{faq}/publish', [App\Http\Controllers\FaqController::class, 'publish'])->middleware('auth') ->name('faqs.publish');
+//FAQ ADMIN ANSWERs 
+Route::get('/faqs/{faq}/answer', [FaqController::class, 'answer'])->middleware('auth')->name('faqs.answer');
+//FAQ ADMIN FAQ ANSWER SUBMISSION
+Route::post('/faqs/{faq}/answer', [FaqController::class, 'storeAnswer'])->middleware('auth')->name('faqs.storeAnswer');
+//FAQ ADMIN DELETE FAQ
+Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->middleware('auth')->name('faqs.destroy');
 //logout
 Route::post('auth/login', [LoginController::class,'logout'])->name('logout');
 

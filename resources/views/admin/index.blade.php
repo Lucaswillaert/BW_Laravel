@@ -28,8 +28,11 @@
                                 <tbody>
                                     @foreach ($faqs as $faq)
                                         <tr class="border-b-2 transition duration-200 hover:bg-gray-100 cursor-pointer">
-                                            <td class="p-2">{{ $faq->user->email }}</td>
-                                            <td class="p-2">{{ $faq->question }}</td>
+                                            <td class="p-2"> {{ $faq->user->email }}</td>
+                                            <td class="p-2"> 
+                                                    <a href="{{ route('faqs.answer', $faq->id) }}">{{ $faq->question }}
+                                                    </a>
+                                            </td>
                                             <td class="p-2">{{ $faq->created_at }}</td>
                                             <td class="p-2">
                                                 <form method="POST" action="{{ route('faqs.publish', $faq->id) }}">
@@ -40,6 +43,16 @@
                                                     </button>
                                                 </form>
                                             </td>
+                                            <td class="p-2">
+                                                <form method="POST" action="{{ route('faqs.destroy', $faq->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+
                                         </tr>
                                     @endforeach
                                 </tbody>
