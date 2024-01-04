@@ -10,6 +10,7 @@
                         <!-- Quote of the day dat veranderd bij het herladen van de pagina -->
                         <div class="container mx-auto px-4">
                             <div class="post-container mx-auto bg-white rounded shadow-md mt-6 px-4 py-4 w-1/2">
+                                <img class="w-full h-64  rounded shadow-md mx-auto" src="https://picsum.photos/200" alt="quotes">
                                 <p class="text-lg">{{ $quote }}</p>
                                 <p class="text-right">— {{ $author }}</p>
                             </div>
@@ -37,7 +38,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded fas fa-trash ">Delete</button>
                                     </form>
                                 </div>
 

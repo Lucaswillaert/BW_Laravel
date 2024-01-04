@@ -37,6 +37,10 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
+    public function editPassword(){
+        return view('profile.edit');
+    }
+
     /**
      * Delete the user's account.
      */
