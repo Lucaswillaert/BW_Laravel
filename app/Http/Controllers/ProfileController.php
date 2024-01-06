@@ -8,22 +8,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+
+
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
-    public function edit(Request $request): View
+
+
+
+    public function index()
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+
+        $user = Auth::user(); //ophalen ingelogde gebruiker
+        return view('profile.index', ['user' => $user]); //gebruiker meegeven aan view
     }
 
-    /**
-     * Update the user's profile information.
-     */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
@@ -37,10 +38,33 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    public function editPassword(){
-        return view('profile.edit');
-    }
+    public function show($id)
+{
+    $user = User::findOrFail($id);
 
+    return view('profile.index', ['user' => $user]);
+}
+
+
+    public function edit(Request $request)
+    {
+        return view('profile.edit', [
+            'user' => $request->user(),
+        ]);
+    }
+    public function updatePassword(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'confirmed', 'min:8'],
+        ]);
+
+        $request->user()->fill([
+            'password' => Hash::make($request->password)
+        ])->save();
+
+        return Redirect::route('profile.edit')->with('status', 'password-updated');
+    }
     /**
      * Delete the user's account.
      */
@@ -59,14 +83,17 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/login.index')->with('status', 'account-deleted');
     }
 
-    
 
-    public function index(){
-            
-            $user = Auth::user(); //ophalen ingelogde gebruiker
-            return view('profile.index', ['user' => $user]); //gebruiker meegeven aan view
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $users = User::where('name', 'like', "%{$query}%")->get();
+        $user = Auth::user();
+        return view('profile.search', ['users' => $users , 'user'=> $user]);
     }
+
 }

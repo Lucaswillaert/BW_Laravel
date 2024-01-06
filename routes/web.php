@@ -58,8 +58,6 @@ Route::get('about', [AboutController::class,'index']) ->name('about.index');
 //ROUTES VOOR CONTACT
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
-//ROUTE VOOR PROFILE PAGE 
-Route::get('profile/edit', [ProfileController::class,'edit']) ->middleware('auth')->name('profile.edit');
 
 //ROUTES VOOR ADMIN
 Route::get('admin/index', [AdminController::class,'index']) ->middleware('auth')->name('admin.index');
@@ -93,6 +91,10 @@ Route::get('entries.create', [EntryController::class,'create']) ->middleware('au
 Route::post('entries', [EntryController::class,'store']) ->middleware('auth') ->name('entries.store');
 //showen van entries
 
+
+//ROUTES VOOR SEARCH
+Route::get('/users/search', [ProfileController::class, 'search'])->name('profile.search');
+
 //ROUTES VOOR PROFILE
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
@@ -101,7 +103,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/profile/password/edit', [ProfileController::class, 'editPassword'])->name('password.edit');
+    Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
+
+    Route::get('/profile/password/edit', [ProfileController::class, 'update.password'])->name('password.update');
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
+    
 });
 
 require __DIR__.'/auth.php';
