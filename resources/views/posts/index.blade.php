@@ -46,7 +46,7 @@
                                     <p>{{ $post->message }}</p>
                                 </div>
                                 <div>
-                                    <small>{{ $post->created_at->format('d/m/y') }} by {{ $post->user_id }}</small>
+                                    <small> 0n {{ $post->created_at->format('d/m/y') }} by  <strong>{{ $post->user->name }}</strong></small>
                                 </div>
 
 
