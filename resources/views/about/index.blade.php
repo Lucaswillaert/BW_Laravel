@@ -74,6 +74,24 @@
                             </div>
                             </section>
                         </div>
+
+                        <div class="post-container mx-auto bg-white rounded shadow-md mt-6 px-4 py-4 w-1/2">
+                            <section id="about-us">
+                                <h2 class= "text-center"> <strong>About  </strong></h2>
+                                <p class="text-center">
+                                    <ul class="list-disc list-inside ">
+                                        <li><a href="https://laravel.com/docs/10.x" target="_blank">https://laravel.com/docs/10.x</a></li>
+                                        <li><a href="https://www.youtube.com/playlist?list=PLFHz2csJcgk_mM2jEf7t8P678O_jz83on" target="_blank">https://www.youtube.com/playlist?list=PLFHz2csJcgk_mM2jEf7t8P678O_jz83on</a></li>
+                                        <li><a href="https://tailwindcss.com" target="_blank">https://tailwindcss.com</a></li>
+                                        <li><a href="https://www.tutorialspoint.com/laravel/laravel_routing.html" target="_blank">https://www.tutorialspoint.com/laravel/laravel_routing.html</a></li>
+                                        <li><a href="https://fontawesome.com/icons/eye?f=classic&s=regular" target="_blank">https://fontawesome.com/icons/eye?f=classic&s=regular</a></li>
+                                        <li><a href="https://zenquotes.io" target="_blank">https://zenquotes.io</a></li>
+                                        <li><a href="https://www.youtube.com/watch?v=2mqsVzgsV_c&t=1979s" target="_blank">https://www.youtube.com/watch?v=2mqsVzgsV_c&t=1979s</a></li>
+                                    </ul>
+                                </p>
+                                <p>repo </p>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </div>

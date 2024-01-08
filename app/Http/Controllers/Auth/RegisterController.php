@@ -88,8 +88,8 @@ class RegisterController extends Controller
         ]);
     }
 
-    protected function redirectPath()
+    protected function redirectTo()
     {
-        return route('/posts');
+        return route('/posts.index');
     }
 }
