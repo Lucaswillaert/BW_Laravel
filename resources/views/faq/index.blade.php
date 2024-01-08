@@ -47,8 +47,8 @@
                                         <!-- buttons -->
                                         <div class="buttons flex">
                                             <a href="{{ route('faq.store') }}">
-                                            <button type="submit"
-                                                class="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500">Post</button>
+                                                <button type="submit"
+                                                    class="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500">Post</button>
                                         </div>
                                     </form>
 
