@@ -65,6 +65,7 @@ Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->middleware('aut
 Route::get('register', [RegisterController::class,'view'])->name('register');
 //opslaan van register
 Route::post('register', [RegisterController::class,'register']);
+
 //ROUTES VOOR LOGIN
 Route::get('auth/login', [LoginController::class,'view']) ->middleware('auth') ->name('login.view');
 //logout

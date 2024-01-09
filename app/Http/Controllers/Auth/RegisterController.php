@@ -45,8 +45,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/posts';
-
+  
     /**
      * Create a new controller instance.
      *
@@ -90,6 +89,10 @@ class RegisterController extends Controller
 
     protected function redirectTo()
     {
-        return route('/posts.index');
+        return route('posts.index');
+    }
+
+    public function dashboard(){
+        return view('posts.index');
     }
 }
