@@ -39,11 +39,11 @@ class ProfileController extends Controller
     }
 
     public function show($id)
-{
-    $user = User::findOrFail($id);
+    {
+        $user = User::findOrFail($id);
 
-    return view('profile.index', ['user' => $user]);
-}
+        return view('profile.index', ['user' => $user]);
+    }
 
 
     public function edit(Request $request)
@@ -86,6 +86,20 @@ class ProfileController extends Controller
         return Redirect::to('/login.index')->with('status', 'account-deleted');
     }
 
+    public function updateAboutMe(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'about_me' => ['required', 'string', 'max:255'],
+        ]);
+
+        $request->user()->fill([
+            'about_me' => $request->about_me
+        ])->save();
+
+        return Redirect::route('profile.edit')->with('status', 'about_me-updated');
+    }
+
+
 
     public function search(Request $request)
     {
@@ -93,7 +107,6 @@ class ProfileController extends Controller
 
         $users = User::where('name', 'like', "%{$query}%")->get();
         $user = Auth::user();
-        return view('profile.search', ['users' => $users , 'user'=> $user]);
+        return view('profile.search', ['users' => $users, 'user' => $user]);
     }
-
 }

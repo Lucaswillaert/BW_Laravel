@@ -18,12 +18,8 @@
 
                                     @if (Auth::id() == $user->id)
                                         <div class="flex justify-center mt-5">
-                                            <a href={{ route('profile.edit' , $user->id) }}
-                                                class="text-blue-500 hover:text-blue-700 mx-3">edit name</a>
-                                            <a href="#" class="text-blue-500 hover:text-blue-700 mx-3">About
-                                                yourself</a>
-                                            <a href="{{ route('profile.edit') }}"
-                                                class="text-blue-500 hover:text-blue-700 mx-3">edit password</a>
+                                            <a href="{{ route('profile.edit' , $user ->id ) }}"
+                                                class="text-blue-500 hover:text-blue-700 mx-3">edit profile</a>
                                         </div>
 
                                         <div class="mt-5">
@@ -33,6 +29,7 @@
 
                                         <div class="mt-5">
                                             <h3 class="text-xl font-semibold">About me</h3>
+                                            
                                             <p class="text-gray-600 mt-2">{{ $user->about_me }}</p>
                                         </div>
                                     @endif

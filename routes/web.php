@@ -20,6 +20,7 @@ use App\Models\Contact;
 
 //ROUTES VOOR POSTS
 Route::get('/', [PostController::class,'index'])->name('index');
+Route::get('/posts', [PostController::class,'index']) ->middleware('auth') ->name('dashboard');
 Route::get('/posts', [PostController::class,'index']) ->middleware('auth') ->name('posts.index');
 Route::get('posts/create', [PostController::class,'create']) ->middleware('auth') ->name('posts.create');
 Route::post('posts', [PostController::class,'store']) ->middleware('auth') ->name('posts.store');
@@ -93,8 +94,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
 
+  
     Route::get('/profile/password/edit', [ProfileController::class, 'update.password'])->name('password.update');
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
+
+    Route::put('/profile/about_me', [ProfileController::class, 'updateAboutMe'])->name('about_me.update');
+    
     
 });
 

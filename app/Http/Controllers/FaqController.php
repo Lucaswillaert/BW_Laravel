@@ -9,7 +9,7 @@ class FaqController extends Controller
 {
     public function index()
     {
-        $faqs = Faq::where('published', 1) ->get();
+        $faqs = Faq::where('published', 1)->get();
         return view('faq.index', ['faqs' => $faqs]);
     }
 
@@ -47,20 +47,19 @@ class FaqController extends Controller
     }
 
     public function destroy($id)
-{
-    $faq = Faq::find($id);
-    $faq->delete();
+    {
+        $faq = Faq::find($id);
+        $faq->delete();
 
-    return redirect()->route('admin.index')->with('success', 'FAQ deleted');
-}
+        return redirect()->route('admin.index')->with('success', 'FAQ deleted');
+    }
 
 
     public function answer($id)
     {
         $faq = Faq::findOrFail($id);
-        return view('faq.answer', ['faq' => $faq ,]);
+        return view('faq.answer', ['faq' => $faq,]);
     }
-
 
     public function storeAnswer(Request $request, $id)
     {
