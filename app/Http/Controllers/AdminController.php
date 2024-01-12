@@ -24,49 +24,17 @@ class AdminController extends Controller
         return view('admin.index', ['faqs' => $faqs , 'contacts' => $contacts]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+   
+    
+    public function makeAdmin(Request $request, User $user)
     {
-        //
-    }
+        $user->role = 'admin';
+        $user->save();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return back()->with('status', 'User made admin');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+   
+   
     public function destroy(Post $post)
     {
 

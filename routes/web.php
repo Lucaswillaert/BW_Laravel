@@ -62,6 +62,8 @@ Route::post('/faqs/{faq}/answer', [FaqController::class, 'storeAnswer'])->middle
 Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->middleware('auth')->name('faqs.destroy');
 //Contact admin answer
 Route::get('/contact/{contact}/answer', [ContactController::class, 'answer'])->name('contact.answer');
+//make admin
+Route::post('/admin/makeAdmin/{user}', [AdminController::class, 'makeAdmin'])->name('admin.makeAdmin');
 
 // Register routes
 Route::get('register', [RegisterController::class,'view'])->name('register');
