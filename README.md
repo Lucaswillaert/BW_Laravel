@@ -1,8 +1,8 @@
-# Project Name
+# JournalMe 
+This project is created for the subject "Backend web" @EhB. 
 
 ## Description
-Provide a brief description of the project.
-
+JournalMe is a platform build for sharing quotes that you relate to. Not only generate Quotes, but also journal about your day, experience etc. 
 ## Installation
 
 ### Prerequisites
@@ -58,15 +58,3 @@ Provide a brief description of the project.
     ```
 
 4. Open a web browser and navigate to `http://localhost:8000` to access the application.
-
-## Usage
-Provide instructions on how to use the application, including any specific commands or features.
-
-## Contributing
-Explain how others can contribute to the project, such as by submitting bug reports or pull requests.
-
-## License
-Specify the license under which the project is distributed.
-
-## Contact
-Provide contact information for any questions or concerns related to the project.
