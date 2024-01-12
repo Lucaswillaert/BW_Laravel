@@ -63,7 +63,7 @@
 
                             <div class="mx-auto w-1/3 mt-8">
                                 <a href="{{ route('admin.index') }}"
-                                    class="btn btn-primary bg-gray-500 hover:bg-gray-400 d-700 text-white font-bold py-2 px-4 rounded mt-8 ml-8 mb-5">Terug</a>
+                                    class="btn btn-primary bg-gray-500 hover:bg-gray-400 d-700 text-white font-bold py-2 px-4 rounded mt-8 ml-20 mb-20">Terug</a>
                             </div>
                     
                     </div>
