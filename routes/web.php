@@ -60,7 +60,8 @@ Route::get('/faqs/{faq}/answer', [FaqController::class, 'answer'])->middleware('
 Route::post('/faqs/{faq}/answer', [FaqController::class, 'storeAnswer'])->middleware('auth')->name('faqs.storeAnswer');
 //FAQ ADMIN DELETE FAQ
 Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->middleware('auth')->name('faqs.destroy');
-
+//Contact admin answer
+Route::get('/contact/{contact}/answer', [ContactController::class, 'answer'])->name('contact.answer');
 
 // Register routes
 Route::get('register', [RegisterController::class,'view'])->name('register');

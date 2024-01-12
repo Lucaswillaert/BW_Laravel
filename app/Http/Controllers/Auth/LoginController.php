@@ -13,6 +13,13 @@ use App\Http\Controllers\Auth;
 class LoginController extends Controller
 {
 
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/posts';
     use AuthenticatesUsers;
 
     public function view()
@@ -45,13 +52,7 @@ class LoginController extends Controller
     }
 
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
+   
     /**
      * Create a new controller instance.
      *

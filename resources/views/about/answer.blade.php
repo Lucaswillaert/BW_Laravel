@@ -15,7 +15,7 @@
 
                             <div class="container mx-auto px-6 py-8 lg:py-16">
                                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
-                                answer the question     
+                                 Contact   
                                 </h2>
                                     <form method="POST" action="{{ route('contact.answer', $contact->id) }}" class="space-y-8">
                                     @csrf
@@ -40,8 +40,7 @@
                                     </div>
                                     <div class="sm:col-span-2">
                                         <label for="message"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your
-                                            message</label>
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"> Your answer</label>
                                         <textarea id="answer" name="answer" rows="6"
                                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             value = "{{$contact->answer}}"></textarea>
