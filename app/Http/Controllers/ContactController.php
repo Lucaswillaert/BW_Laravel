@@ -49,15 +49,10 @@ class ContactController extends Controller
         $contacts = Contact::all();
         return view('index', ['contacts' => $contact]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Contact $contact)
+    public function answer(Contact $contact)
     {
-        //
+        return view('about.answer', ['contact' => $contact]);
     }
-
     /**
      * Update the specified resource in storage.
      */

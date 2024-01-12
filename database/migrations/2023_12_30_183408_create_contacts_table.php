@@ -16,7 +16,11 @@ return new class extends Migration
         $table->string('email');
         $table->string('subject');
         $table->text('message');
+        $table->text('answer')->nullable();
         $table->timestamps();
+
+        //FK naar de user
+        $table-> foreignId('user_id')->constrained();
     });
 }
 

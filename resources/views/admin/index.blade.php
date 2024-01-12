@@ -12,7 +12,6 @@
                             </div>
                         @endif
                         <!-- CONTENT ADMIN PAGE -->
-                        <!-- wat wil ik hebben staan: aankrijgen en toevoegen van FAQ, zetten in categorie (quote vragen , journal vragen , profiel vragen)  -->
                     <div >
                         <div class="container mx-auto px-6">
                             <h1 class="text-center text-3xl">FAQ vragen</h1>
@@ -28,12 +27,12 @@
                                 <tbody>
                                     @foreach ($faqs as $faq)
                                         <tr class="border-b-2 transition duration-200 hover:bg-gray-100 cursor-pointer">
-                                            <td class="p-2"> {{ $faq->user->email }}</td>
+                                            <td class="p-2">  <a href="{{ route('faqs.answer', $faq->id) }}">{{ $faq->user->email }}  </a></td>
                                             <td class="p-2"> 
                                                     <a href="{{ route('faqs.answer', $faq->id) }}">{{ $faq->question }}
                                                     </a>
                                             </td>
-                                            <td class="p-2">{{ $faq->created_at }}</td>
+                                            <td class="p-2">  <a href="{{ route('faqs.answer', $faq->id) }}">{{ $faq->created_at }}  </a></td>
                                             <td class="p-2">
                                                 <form method="POST" action="{{ route('faqs.publish', $faq->id) }}">
                                                     @csrf
@@ -62,7 +61,7 @@
 
 
 
-                        <div>
+                        <div class="container mx-auto px-6">
                             <h1 class="text-center text-3xl">contact forms</h1>
                             <table class="table-auto w-full text-left">
                                 <thead>
@@ -76,19 +75,10 @@
                                 <tbody>
                                     @foreach ($contacts as $contact)
                                         <tr class="border-b-2 transition duration-200 hover:bg-gray-100 cursor-pointer">
-                                            <td class="p-2">{{ $contact->email }}</td>
-                                            <td class="p-2">{{ $contact->subject }}</td>
-                                            <td class="p-2">{{ $contact->created_at }}</td>
-                                            <td class="p-2">{{ $contact->message  }}</td>
-                                            {{-- <td class="p-2">
-                                                <form method="POST" action="{{ route('faqs.publish', $faq->id) }}">
-                                                    @csrf
-                                                    <button type="submit"
-                                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                        {{ $faq->published ? 'Unpublish' : 'Publish' }}
-                                                    </button>
-                                                </form>
-                                            </td> --}}
+                                            <td class="p-2"> <a href="{{ route('contact.answer', $contact->id) }}">{{ $contact->email }}</a> </td>
+                                            <td class="p-2"> <a href="{{ route('contact.answer', $contact->id) }}">{{ $contact->subject }} </a></td>
+                                            <td class="p-2"> <a href="{{ route('contact.answer', $contact->id) }}">{{ $contact->created_at }} </a> </td>
+                                            <td class="p-2"> <a href="{{ route('contact.answer', $contact->id) }}">{{ $contact->message }} </a> </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
