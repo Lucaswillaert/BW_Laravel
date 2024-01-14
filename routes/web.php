@@ -46,6 +46,7 @@ Route::get('about', [AboutController::class,'index']) ->name('about.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 
+
 //ROUTES VOOR ADMIN
 Route::get('admin/index', [AdminController::class,'index']) ->middleware('auth')->name('admin.index');
 //delete quote door admin
@@ -64,6 +65,7 @@ Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->middleware('aut
 Route::get('/contact/{contact}/answer', [ContactController::class, 'answer'])->name('contact.answer');
 //make admin
 Route::post('/admin/makeAdmin/{user}', [AdminController::class, 'makeAdmin'])->name('admin.makeAdmin');
+
 
 // Register routes
 Route::get('register', [RegisterController::class,'view'])->name('register');

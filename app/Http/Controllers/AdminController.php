@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 
 
+
 use Illuminate\Http\Request;
 use App\Models\Faq;
 use App\Models\Post;
 use App\Models\Contact;
+use App\Models\User;
+use App\Models\Comment;
+
 
 
 
@@ -26,12 +30,16 @@ class AdminController extends Controller
 
    
     
-    public function makeAdmin(Request $request, User $user)
+    public function makeAdmin( User $user)
     {
-        $user->role = 'admin';
+        if ($user->is_admin === 1) {
+            $user->is_admin = 0;
+        } else {
+            $user->is_admin = 1;
+        }
         $user->save();
-
-        return back()->with('status', 'User made admin');
+    
+        return back()->with('status', 'User role updated');
     }
    
    
