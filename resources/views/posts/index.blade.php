@@ -21,7 +21,7 @@
                         <div class="row justify-content-center">
                             <div class="flex justify-center my-4">
                                 <a href="{{ route('posts.create') }}"
-                                class="inline-block bg-white hover:bg-gray-100 text-black font-semibold text-sm py-2 px-4 rounded shadow">Quote
+                                    class="inline-block bg-white hover:bg-gray-100 text-black font-semibold text-sm py-2 px-4 rounded shadow">Quote
                                     posten </a>
                             </div>
                         </div>
@@ -70,12 +70,12 @@
                                         <div class="p-3 bg-white rounded-xl shadow-md flex items-center space-x-4">
                                             <p>{{ $comment->user->name }}</p>
                                         </div>
-                                        <p class="ml-4" >{{ $comment->comment }}</p>
+                                        <p class="ml-4">{{ $comment->comment }}</p>
                                     </div>
                                 @endforeach
 
                                 <!-- Button to open the comment form -->
-                               
+
 
                                 <div class="post-container bg-custom-light rounded shadow-md mt-6 px-2 py-2 w-full">
                                     <!-- Comment form -->
