@@ -58,3 +58,10 @@ JournalMe is a platform build for sharing quotes that you relate to. Not only ge
     ```
 
 4. Open a web browser and navigate to `http://localhost:8000` to access the application.
+
+
+
+### You should know
+
+1. you can visit the site as visitor at http://127.0.0.1:8000/posts 
+2. making another user admin can be done in the searchbar and searching for that user 
