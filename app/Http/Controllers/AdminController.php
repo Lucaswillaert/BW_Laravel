@@ -34,12 +34,14 @@ class AdminController extends Controller
     {
         if ($user->is_admin === 1) {
             $user->is_admin = 0;
+            $message = 'Admin rechten zijn ontnomen.';
         } else {
             $user->is_admin = 1;
+            $message = 'De gebruiker is nu een admin.';
         }
         $user->save();
     
-        return back()->with('status', 'User role updated');
+        return back()->with('status', $message);
     }
    
    
