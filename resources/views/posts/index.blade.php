@@ -18,13 +18,15 @@
                             </div>
                         </div>
                         <!-- Quote of the day dat veranderd bij het herladen van de pagina -->
-                        <div class="row justify-content-center">
-                            <div class="flex justify-center my-4">
-                                <a href="{{ route('posts.create') }}"
-                                    class="inline-block bg-white hover:bg-gray-100 text-black font-semibold text-sm py-2 px-4 rounded shadow">Quote
-                                    posten </a>
+                        @auth
+                            <div class="row justify-content-center">
+                                <div class="flex justify-center my-4">
+                                    <a href="{{ route('posts.create') }}"
+                                        class="inline-block bg-white hover:bg-gray-100 text-black font-semibold text-sm py-2 px-4 rounded shadow">Quote
+                                        posten </a>
+                                </div>
                             </div>
-                        </div>
+                        @endauth
                     </div>
                     <!-- Loop door alle posts heen -->
                     <div class="card-body">
@@ -37,14 +39,15 @@
                             <div
                                 class="post-container relative mx-auto bg-custom-blue rounded shadow-md mt-4 px-4 py-4 w-full sm:w-1/2 lg:w-1/3">
                                 <div class="absolute top-0 right-0">
+                                    @if (Auth::check() && Auth::user()->is_admin)
                                     <form method="POST" action="{{ route('posts.destroy', $post) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
                                             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded fas fa-trash mt-2 mr-2 ">Delete</button>
                                     </form>
+                                    @endif
                                 </div>
-
                                 <div>
                                     <p>{{ $post->message }}</p>
                                 </div>
@@ -52,9 +55,6 @@
                                     <small> 0n {{ $post->created_at->format('d/m/y') }} by
                                         <strong>{{ $post->user->name }}</strong></small>
                                 </div>
-
-
-
                                 <div class="flex items-center border-custom-dark p-2">
                                     <p class="bg-blue-500 text-white font-bold py-1 px-2 rounded  mr-2">
                                         {{ $post->likes->count() }} <strong>likes</strong></p>
@@ -65,51 +65,52 @@
                                     </form>
                                 </div>
                                 <!-- Loop door alle comments heen -->
-                                @foreach ($post->comments as $comment)
-                                    <div class="flex items-center bg-gray-200 rounded-xl shadow-md mt-1 px-4 py-3 ">
-                                        <div class="p-3 bg-white rounded-xl shadow-md flex items-center space-x-4">
-                                            <p>{{ $comment->user->name }}</p>
+                                <!-- Alleen ingelogde gebruikers kunnen een comment plaatsen -->
+                                @auth
+                                    @foreach ($post->comments as $comment)
+                                        <div class="flex items-center bg-gray-200 rounded-xl shadow-md mt-1 px-4 py-3 ">
+                                            <div class="p-3 bg-white rounded-xl shadow-md flex items-center space-x-4">
+                                                <p>{{ $comment->user->name }}</p>
+                                            </div>
+                                            <p class="ml-4">{{ $comment->comment }}</p>
                                         </div>
-                                        <p class="ml-4">{{ $comment->comment }}</p>
+                                    @endforeach
+                                @endauth
+                                <!-- Comment form -->
+                                    <div class="post-container bg-custom-light rounded shadow-md mt-6 px-2 py-2 w-full">
+                                        @auth
+                                        <form method="POST" action="{{ route('comments.store', $post) }}"
+                                            class="w-full bg-white rounded-lg px-4 pt-2">
+                                            @csrf
+                                            <div class="flex flex-wrap -mx-3 mb-6">
+                                                <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
+                                                <div class="w-full md:w-full px-3 mb-2 mt-2">
+                                                    <textarea
+                                                        class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
+                                                        name="comment" placeholder='Type Your Comment' required></textarea>
+                                                </div>
+                                                <div class="w-full md:w-full flex items-start md:w-full px-3">
+                                                    <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+
+
+                                                    </div>
+                                                    <div class="-mr-1">
+                                                        <input type='submit'
+                                                            class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 mb-2 hover:bg-gray-100"
+                                                            value='Post Comment'>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        @endauth
                                     </div>
-                                @endforeach
-
-                                <!-- Button to open the comment form -->
-
-
-                                <div class="post-container bg-custom-light rounded shadow-md mt-6 px-2 py-2 w-full">
-                                    <!-- Comment form -->
-                                    <form method="POST" action="{{ route('comments.store', $post) }}"
-                                        class="w-full bg-white rounded-lg px-4 pt-2">
-                                        @csrf
-                                        <div class="flex flex-wrap -mx-3 mb-6">
-                                            <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
-                                            <div class="w-full md:w-full px-3 mb-2 mt-2">
-                                                <textarea
-                                                    class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-                                                    name="comment" placeholder='Type Your Comment' required></textarea>
-                                            </div>
-                                            <div class="w-full md:w-full flex items-start md:w-full px-3">
-                                                <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
-
-
-                                                </div>
-                                                <div class="-mr-1">
-                                                    <input type='submit'
-                                                        class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 mb-2 hover:bg-gray-100"
-                                                        value='Post Comment'>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
-                            </div>
-                    </div>
-                    @endforeach
+                        </div>
+                        @endforeach
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-@endsection
+        </div>
+    @endsection

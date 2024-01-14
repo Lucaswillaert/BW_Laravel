@@ -21,7 +21,7 @@ use App\Models\Contact;
 //ROUTES VOOR POSTS
 Route::get('/', [PostController::class,'index'])->name('index');
 Route::get('/posts', [PostController::class,'index']) ->middleware('auth') ->name('dashboard');
-Route::get('/posts', [PostController::class,'index']) ->middleware('auth') ->name('posts.index');
+Route::get('/posts', [PostController::class,'index']) ->name('posts.index');
 Route::get('posts/create', [PostController::class,'create']) ->middleware('auth') ->name('posts.create');
 Route::post('posts', [PostController::class,'store']) ->middleware('auth') ->name('posts.store');
 //ROUTES COMMENTS/LIKES
