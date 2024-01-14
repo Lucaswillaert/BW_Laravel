@@ -6,6 +6,8 @@ JournalMe is a platform build for sharing quotes that you relate to. Not only ge
 ## Installation
 
 ### Prerequisites
+- [PHP](https://www.php.net/downloads.php) installed (version 7.3 or higher is recommended).
+- [Laravel](https://laravel.com/docs/8.x/installation) installed (version 8.x is recommended).
 - [XAMPP](https://www.apachefriends.org/index.html) installed for database management.
 - [Git](https://git-scm.com/) installed for cloning the repository.
 
