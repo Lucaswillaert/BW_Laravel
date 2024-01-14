@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-4 ">
+    <div class="container mx-auto px-4 min-h-screen ">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -40,12 +40,12 @@
                                 class="post-container relative mx-auto bg-custom-blue rounded shadow-md mt-4 px-4 py-4 w-full sm:w-1/2 lg:w-1/3">
                                 <div class="absolute top-0 right-0">
                                     @if (Auth::check() && Auth::user()->is_admin)
-                                    <form method="POST" action="{{ route('posts.destroy', $post) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded fas fa-trash mt-2 mr-2 ">Delete</button>
-                                    </form>
+                                        <form method="POST" action="{{ route('posts.destroy', $post) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded fas fa-trash mt-2 mr-2 ">Delete</button>
+                                        </form>
                                     @endif
                                 </div>
                                 <div>
@@ -77,40 +77,45 @@
                                     @endforeach
                                 @endauth
                                 <!-- Comment form -->
-                                    <div class="post-container bg-custom-light rounded shadow-md mt-6 px-2 py-2 w-full">
-                                        @auth
+                                <div class="post-container bg-custom-light rounded shadow-md mt-6 px-2 py-2 w-full">
+                                    @auth
                                         <form method="POST" action="{{ route('comments.store', $post) }}"
                                             class="w-full bg-white rounded-lg px-4 pt-2">
                                             @csrf
                                             <div class="flex flex-wrap -mx-3 mb-6">
                                                 <h2 class="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
                                                 <div class="w-full md:w-full px-3 mb-2 mt-2">
-                                                    <textarea
-                                                        class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-                                                        name="comment" placeholder='Type Your Comment' required></textarea>
-                                                </div>
-                                                <div class="w-full md:w-full flex items-start md:w-full px-3">
-                                                    <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
+                                                    <input type="text"
+                                                        class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
+                                                        name="comment" placeholder='Type Your Comment' required </input>
+                                                    
+                                                    </div>
+                                                    <div class="w-full md:w-full flex items-start md:w-full px-3">
+                                                        <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
 
 
-                                                    </div>
-                                                    <div class="-mr-1">
-                                                        <input type='submit'
-                                                            class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 mb-2 hover:bg-gray-100"
-                                                            value='Post Comment'>
+                                                        </div>
+                                                        <div class="-mr-1">
+                                                            <input type='submit'
+                                                                class="bg-white text-gray-700 font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 mb-2 hover:bg-gray-100"
+                                                                value='Post Comment'>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </form>
-                                        @endauth
-                                    </div>
+                                    @endauth
                                 </div>
-                        </div>
-                        @endforeach
-
+                            </div>
                     </div>
+                    @endforeach
+                    <!-- Paginatie links -->
+
+                </div>
+                <div class="mt-4 flex justify-center">
+                    {{ $posts->links() }}
                 </div>
             </div>
         </div>
-        </div>
-    @endsection
+    </div>
+    </div>
+@endsection

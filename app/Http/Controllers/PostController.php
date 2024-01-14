@@ -17,7 +17,7 @@ class PostController extends Controller
     {
 
         //telkens bij herladen pagina nieuwe quote
-        $posts = Post::with(['likes' , 'comments' , 'user']) ->orderBy('created_at' , 'desc')->get();
+        $posts = Post::with(['likes' , 'comments' , 'user']) ->orderBy('created_at' , 'desc')->paginate(5);
         $response = Http::get('https://zenquotes.io/api/random');
         $quoteData = $response->json(0);
         $quote = $quoteData['q'];
