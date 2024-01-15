@@ -6,11 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                       
                         <!-- About Us Section -->
                         <div class="post-container mx-auto bg-white rounded shadow-md mt-6 px-4 py-4 w-1/2">
                             <section id="about-us">
@@ -77,7 +73,7 @@
 
                         <div class="post-container mx-auto bg-white rounded shadow-md mt-6 px-4 py-4 w-1/2">
                             <section id="about-us">
-                                <h2 class= "text-center"> <strong>About  </strong></h2>
+                                <h2 class= "text-center"> <strong>About informatie  </strong></h2>
                                 <p class="text-center">
                                     <ul class="list-disc list-inside ">
                                         <li><a href="https://laravel.com/docs/10.x" target="_blank">https://laravel.com/docs/10.x</a></li>
