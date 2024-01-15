@@ -16,9 +16,8 @@ JournalMe is a platform build for sharing quotes that you relate to. Not only ge
 2. Change the current working directory to the location where you want to clone the repository.
 3. Run the following command to clone the repository:
     ```shell
-    git clone <repository_url>
+    git clone https://github.com/Lucaswillaert/BW_Laravel 
     ```
-    Replace `<repository_url>` with the URL of the repository.
 
 ### Set Up the Environment
 1. Install the required dependencies by running the following command in the project directory:
@@ -41,9 +40,9 @@ JournalMe is a platform build for sharing quotes that you relate to. Not only ge
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
-    DB_DATABASE=your_database_name
-    DB_USERNAME=your_database_username
-    DB_PASSWORD=your_database_password
+    DB_DATABASE=journalsite
+    DB_USERNAME=journal
+    DB_PASSWORD=jr
     ```
 
 ### Start the Application
