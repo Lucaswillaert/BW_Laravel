@@ -23,7 +23,7 @@
                                 <p>repo </p>
                             </section>
                         </div>
-
+                            <!-- Contact Us Section -->
                         <div class="post-container mx-auto bg-white rounded shadow-md mt-6 px-4 py-4 w-1/2">
 
                             <div class="container mx-auto px-6 py-8 lg:py-16">
@@ -70,7 +70,7 @@
                             </div>
                             </section>
                         </div>
-
+                        <!-- About section with sources and repo link -->
                         <div class="post-container mx-auto bg-white rounded shadow-md mt-6 px-4 py-4 w-1/2">
                             <section id="about-us">
                                 <h2 class= "text-center"> <strong>About informatie  </strong></h2>
