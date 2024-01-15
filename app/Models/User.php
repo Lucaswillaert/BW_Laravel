@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'date_of_birth',
+        'about_me',
+        'is_admin', 
+
     ];
 
     /**
@@ -42,4 +46,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function entries(){
+        return $this->hasMany(Entry::class);
+        //link voor het koppelen user aan user_id op posts
+    }
+
+    
 }
