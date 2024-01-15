@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card mx-auto w-3/4">
                     <table class="table-auto w-full text-left">
-
+                            <!-- journal page, click on an row and go to the entry -->
                         <div class="row justify-content-center">
                             <div class="flex justify-center my-4">
                                 <a href="{{route('journal.create')}}"  class="btn btn-primary  mb-4 border-2 border-gray-500  rounded-lg px-4 py-2">New entry </a>

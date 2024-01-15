@@ -17,6 +17,7 @@
                                 <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
                                 answer the question     
                                 </h2>
+                                <!-- method to storing the answers of the questions from users -->
                                     <form method="POST" action="{{ route('faqs.storeAnswer', $faq->id) }}" class="space-y-8">
                                     @csrf
                                    

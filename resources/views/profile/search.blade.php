@@ -25,7 +25,7 @@
                             @endif
 
 
-                            <!-- Profile Cards -->
+                            <!-- Profile Cards in the search field  -->
                             @foreach ($users as $user)
                                 <div>
                                     <a href="{{ route('profile.show', $user->id) }}" style="z-index: 1;">

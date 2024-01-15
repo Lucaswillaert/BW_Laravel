@@ -25,6 +25,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <!-- Loop through all the faq's -->
                                         @foreach ($faqs as $faq)
                                             <tr class="border-b-2 transition duration-200 hover:bg-gray-100 cursor-pointer">
                                                 <td class="p-2"> <a
@@ -46,6 +47,7 @@
                                                         </button>
                                                     </form>
                                                 </td>
+                                                <!-- Delete Button --> 
                                                 <td class="p-2">
                                                     <form method="POST" action="{{ route('faqs.destroy', $faq->id) }}">
                                                         @csrf
@@ -61,6 +63,8 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <br>
+                            <br>
 
 
 
@@ -77,6 +81,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+
+                                        <!-- Loop through all the contacts --> 
                                         @foreach ($contacts as $contact)
                                             <tr class="border-b-2 transition duration-200 hover:bg-gray-100 cursor-pointer">
                                                 <td class="p-2"> <a

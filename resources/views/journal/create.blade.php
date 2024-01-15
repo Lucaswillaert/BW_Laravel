@@ -8,7 +8,7 @@
                     <div class="container">
                         <div class="row justify-content-center ">
                             <div class="heading text-center font-bold text-2xl m-5 text-gray-800">New entry</div>
-
+                                <!-- form for making a journal entry -->
                             <form action="{{ route('journal.store') }}" method="POST"
                                 class="editor mx-auto w-10/12 flex flex-col text-gray-800 border border-gray-300 p-4 shadow-lg max-w-2xl rounded-lg">
                                 @csrf
