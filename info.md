@@ -14,5 +14,19 @@ bugs te fixen:
 - FAQ wil niet meer doorkomen de antwoorden x
 -login logo aanpassen x
 - contact form klikken en naar toe gaan admin page x
-- search: als ik op de user click dan gaat die niet naar dat profiel 
+- make admin knop x 
 - seeders toevoegen:
+    - users x
+    - posts x
+    - likes x
+    - faqs x
+    - comments x
+    - entries x
+
+
+
+ Important: add the 'vendor' folder to your .gitignore file.
+
+name your file: bw_firstname_lastname_laravel.zip. In the zip you will delete the vendor folder.
+
+
