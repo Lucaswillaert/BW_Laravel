@@ -85,7 +85,7 @@
                                         <li><a href="https://www.youtube.com/watch?v=2mqsVzgsV_c&t=1979s" target="_blank">https://www.youtube.com/watch?v=2mqsVzgsV_c&t=1979s</a></li>
                                     </ul>
                                 </p>
-                                <p>repo </p>
+                                <p href="https://github.com/Lucaswillaert/BW_Laravel" target="_blank"> https://github.com/Lucaswillaert/BW_Laravel </p>
                             </section>
                         </div>
                     </div>

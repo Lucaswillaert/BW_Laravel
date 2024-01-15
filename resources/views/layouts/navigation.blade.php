@@ -36,9 +36,9 @@
                     </x-nav-link>
                 </div>
 
-
+                    <!-- search option for users -->
                 <div id="app" class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <form class="flex items-center"  action="{{ route('profile.search') }}" method="GET">
+                    <form class="flex items-center" action="{{ route('profile.search') }}" method="GET">
                         <label for="simple-search" class="sr-only">Search</label>
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -59,7 +59,7 @@
                     </form>
                 </div>
 
-               
+
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     @if (Auth::user() && Auth::user()->is_admin == 1)

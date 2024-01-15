@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card ">
                     <div class="mx-auto w-1/2">
-                       
+                       <!-- let user show their journal entry  -->
                         <div class="post-container mx-auto bg-white rounded shadow-md mt-6 px-4 py-4 w-3/4">
                             <h2
                                 class="subtitle mb-4 mt-4 text-xl font-bold leading-none tracking-tight text-gray-700 md:text-2xl lg:text-3xl">
